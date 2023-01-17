@@ -7,17 +7,31 @@ public class Prestador {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private int classe;
+    private Integer codigo;
     private String nome;
 
     private String cpf;
 
-    public Prestador(int classe, String nome, String cpf) {
+    public Prestador(int classe, Integer codigo, String nome, String cpf) {
         this.classe = classe;
+        this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
     }
 
     public Prestador() {
+    }
+
+    public void setClasse(int classe) {
+        this.classe = classe;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public void setId(Long id) {

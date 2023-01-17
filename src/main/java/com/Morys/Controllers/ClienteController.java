@@ -25,7 +25,7 @@ public class ClienteController {
     public ResponseEntity<Cliente> registrarCliente(@RequestBody Cliente cliente, UriComponentsBuilder uriBuilder){
         Cliente cliente1 = clienteRepository.saveAndFlush(cliente);
 
-        URI uri = uriBuilder.path("cliente/{id}").buildAndExpand(cliente1.getId()).toUri();
+        URI uri = uriBuilder.path("/apiCliente/{id}").buildAndExpand(cliente1.getId()).toUri();
 
         return ResponseEntity.created(uri).body(cliente1);
     }
@@ -42,9 +42,5 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/teste")
-    public void teste(){
-        clienteRepository.saveAndFlush(new Cliente("teste","123456"));
-    }
 
 }

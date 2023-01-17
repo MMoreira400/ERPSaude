@@ -7,16 +7,27 @@ import java.util.List;
 @Entity
 public class Solicitacao {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long Id;
     @ManyToOne(targetEntity = Cliente.class)
     private Cliente cliente;
     @ManyToOne(targetEntity = Prestador.class)
     private Prestador prestador;
-    @OneToMany(targetEntity = Procedimento.class)
+    @ManyToMany(targetEntity = Procedimento.class)
     private List<Procedimento> procedimentos;
     @Enumerated(EnumType.STRING)
     private StatusSolicitacao statusSolicitacao = StatusSolicitacao.NOVO;
+
+    public Solicitacao() {
+    }
+
+
+    public Solicitacao(Cliente cliente, Prestador prestador, List<Procedimento> procedimentos) {
+        this.cliente = cliente;
+        this.prestador = prestador;
+        this.procedimentos = procedimentos;
+        this.statusSolicitacao = StatusSolicitacao.NOVO;
+    }
 
     public Long getId() {
         return Id;
@@ -26,6 +37,7 @@ public class Solicitacao {
     public Prestador getPrestador() {
         return prestador;
     }
+
 
     public void setPrestador(Prestador prestador) {
         this.prestador = prestador;

@@ -10,12 +10,9 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "1000")
     private Integer codigo;
     private String nome;
     private String CPF;
-    @OneToMany(targetEntity = Solicitacao.class, cascade = CascadeType.ALL)
-    private List<Solicitacao> Solicitacoes;
 
     public Cliente() {
     }
@@ -25,7 +22,7 @@ public class Cliente {
         this.CPF = CPF;
     }
 
-    public Cliente(Integer codigo, String nome, String CPF) {
+    public Cliente(Integer codigo, String nome, String numeroCartao, String CPF) {
         this.codigo = codigo;
         this.nome = nome;
         this.CPF = CPF;
@@ -43,14 +40,6 @@ public class Cliente {
         this.codigo = codigo;
     }
 
-    public List<Solicitacao> getSolicitacoes() {
-        return Solicitacoes;
-    }
-
-    public void setSolicitacoes(List<Solicitacao> solicitacoes) {
-        Solicitacoes = solicitacoes;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -66,4 +55,5 @@ public class Cliente {
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
+
 }

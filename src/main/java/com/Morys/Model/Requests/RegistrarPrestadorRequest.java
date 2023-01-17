@@ -6,8 +6,13 @@ import com.Morys.Model.Entities.Prestador;
 public class RegistrarPrestadorRequest {
     private int classe;
     private String nome;
-
+    private Integer codigo;
     private String cpf;
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
 
     public int getClasse() {
         return classe;
@@ -34,15 +39,7 @@ public class RegistrarPrestadorRequest {
     }
 
     public final Prestador converterPrestador() {
-        return new Prestador(this.classe,  this.getNome(), this.cpf);
+        return new Prestador(this.classe, this.codigo,  this.nome, this.cpf);
     }
 
-    @Override
-    public String toString() {
-        return "RegistrarPrestadorRequest{" +
-                "classe=" + classe +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}';
-    }
 }

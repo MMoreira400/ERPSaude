@@ -9,14 +9,15 @@ public class Procedimento {
     private Integer Classe;
     private Integer codigo;
     private String nome;
-    @ManyToOne(targetEntity = Solicitacao.class, cascade = CascadeType.ALL)
-    private Solicitacao solicitacao;
 
-    public Procedimento(Integer classe, Integer codigo, String nome, Solicitacao solicitacao) {
+
+    public Procedimento() {
+    }
+
+    public Procedimento(Integer classe, Integer codigo, String nome) {
         this.Classe = classe;
         this.codigo = codigo;
         this.nome = nome;
-        this.solicitacao = solicitacao;
     }
 
     public Long getID() {

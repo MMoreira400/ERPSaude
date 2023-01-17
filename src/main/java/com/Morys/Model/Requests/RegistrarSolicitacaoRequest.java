@@ -1,43 +1,36 @@
 package com.Morys.Model.Requests;
 
 import com.Morys.Model.Entities.*;
+import com.Morys.Model.Entities.Responses.ClienteDTO;
+import com.Morys.Model.Entities.Responses.PrestadorDTO;
+import com.Morys.Model.Entities.Responses.ProcedimentoDTO;
 
 import java.util.List;
 
 public class RegistrarSolicitacaoRequest {
 
-    private Cliente cliente;
-    private Prestador prestador;
-    private List<Procedimento> procedimentos;
-    private StatusSolicitacao statusSolicitacao = StatusSolicitacao.NOVO;
+    private ClienteDTO cliente;
+    private PrestadorDTO prestador;
+    private List<ProcedimentoDTO> procedimentos;
 
     public RegistrarSolicitacaoRequest() {
     }
 
-    public Solicitacao converteEmSolicitacao() {
-        Solicitacao solicitacao = new Solicitacao();
-        solicitacao.setPrestador(this.prestador);
-        solicitacao.setCliente(this.cliente);
-        solicitacao.setProcedimentos(this.procedimentos);
-        solicitacao.setStatusSolicitacao(this.statusSolicitacao);
-        return solicitacao;
+    public RegistrarSolicitacaoRequest(ClienteDTO cliente, PrestadorDTO prestador, List<ProcedimentoDTO> procedimentos) {
+        this.cliente = cliente;
+        this.prestador = prestador;
+        this.procedimentos = procedimentos;
     }
 
-
-    public Cliente getCliente() {
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
-    public Prestador getPrestador() {
+    public PrestadorDTO getPrestador() {
         return prestador;
     }
 
-    public List<Procedimento> getProcedimentos() {
+    public List<ProcedimentoDTO> getProcedimentos() {
         return procedimentos;
     }
-
-    public StatusSolicitacao getStatusSolicitacao() {
-        return statusSolicitacao;
-    }
-
 }
