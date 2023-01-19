@@ -9,9 +9,10 @@ import java.util.List;
 public class Classe_Prestador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+    private Integer ID;
     private String Codigo;
     private String Termo;
+
     public Classe_Prestador(String codigo, String termo) {
         this.Codigo = codigo;
         this.Termo = termo;

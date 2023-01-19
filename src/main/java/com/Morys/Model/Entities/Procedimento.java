@@ -1,12 +1,15 @@
 package com.Morys.Model.Entities;
 
+import com.Morys.Model.Entities.Classes.Classe_Procedimento;
 import jakarta.persistence.*;
 
 @Entity
 public class Procedimento {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    private Integer Classe;
+    @ManyToOne(targetEntity = Classe_Procedimento.class)
+    @JoinColumn(name = "classe")
+    private Classe_Procedimento Classe;
     private Integer codigo;
     private String nome;
 
@@ -14,8 +17,8 @@ public class Procedimento {
     public Procedimento() {
     }
 
-    public Procedimento(Integer classe, Integer codigo, String nome) {
-        this.Classe = classe;
+    public Procedimento(Classe_Procedimento classe, Integer codigo, String nome) {
+        Classe = classe;
         this.codigo = codigo;
         this.nome = nome;
     }
@@ -24,6 +27,13 @@ public class Procedimento {
         return ID;
     }
 
+    public Classe_Procedimento getClasse() {
+        return Classe;
+    }
+
+    public void setClasse(Classe_Procedimento classe) {
+        Classe = classe;
+    }
 
     public Integer getCodigo() {
         return codigo;

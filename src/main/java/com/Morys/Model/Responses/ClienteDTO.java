@@ -1,4 +1,4 @@
-package com.Morys.Model.Entities.Responses;
+package com.Morys.Model.Responses;
 
 import com.Morys.Model.Entities.Cliente;
 import com.Morys.Model.Entities.Solicitacao;

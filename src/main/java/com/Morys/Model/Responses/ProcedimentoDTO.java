@@ -1,4 +1,4 @@
-package com.Morys.Model.Entities.Responses;
+package com.Morys.Model.Responses;
 
 import com.Morys.Model.Entities.Procedimento;
 
@@ -7,7 +7,10 @@ public class ProcedimentoDTO {
     private String nome;
 
     public ProcedimentoDTO(Procedimento t) {
+        this.codigo = t.getCodigo();
+        this.nome = t.getNome();
     }
+
 
     public ProcedimentoDTO() {
     }

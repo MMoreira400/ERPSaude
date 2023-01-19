@@ -1,15 +1,11 @@
 package com.Morys.Controllers;
 
 import com.Morys.Model.Entities.Prestador;
-import com.Morys.Model.Entities.Responses.PrestadorDTO;
 import com.Morys.Model.Repositories.PrestadorRepository;
-import com.Morys.Model.Requests.RegistrarPrestadorRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.Optional;
 
 @RestController

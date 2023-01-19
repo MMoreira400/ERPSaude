@@ -1,19 +1,11 @@
 package com.Morys.Controllers;
 
 
-import com.Morys.Model.Entities.Cliente;
-import com.Morys.Model.Entities.Prestador;
-import com.Morys.Model.Entities.Procedimento;
-import com.Morys.Model.Entities.Responses.PrestadorDTO;
-import com.Morys.Model.Entities.Responses.ProcedimentoDTO;
-import com.Morys.Model.Entities.Responses.SolicitacaoDTO;
-import com.Morys.Model.Entities.Solicitacao;
-import com.Morys.Model.Repositories.ClienteRepository;
-import com.Morys.Model.Repositories.PrestadorRepository;
-import com.Morys.Model.Repositories.ProcedimentoRepository;
-import com.Morys.Model.Repositories.SolicitacaoRepository;
+import com.Morys.Model.Entities.*;
+import com.Morys.Model.Repositories.*;
+import com.Morys.Model.Responses.ProcedimentoDTO;
 import com.Morys.Model.Requests.RegistrarSolicitacaoRequest;
-import jdk.swing.interop.SwingInterOpUtils;
+import com.Morys.Model.Responses.SolicitacaoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +28,8 @@ public class SolicitacaoController {
     PrestadorRepository prestadorRepository;
     @Autowired
     ProcedimentoRepository procedimentoRepository;
+    @Autowired
+    PessoaRepository pessoaRepository;
 
     @PostMapping("/registraSolicitacao")
     public ResponseEntity registraSolicitacao(@RequestBody RegistrarSolicitacaoRequest request, UriComponentsBuilder uriBuilder){
@@ -54,7 +49,7 @@ public class SolicitacaoController {
 
                  URI uri = uriBuilder.path("/apiSolicitacao/{id}").buildAndExpand(solicitacao.getId()).toUri();
 
-                 return ResponseEntity.created(uri).body(solicitacao);
+                 return ResponseEntity.created(uri).body(SolicitacaoDTO.toSolicitacaoDTO(solicitacao));
 
              }else{
                  return ResponseEntity.badRequest().build();
@@ -77,13 +72,10 @@ public class SolicitacaoController {
 
     }
 
-    @GetMapping("/teste")
-    public List<ProcedimentoDTO> procedimentoDTOList(){
-        List<ProcedimentoDTO> procedimentoDTOList = new ArrayList<>();
-        procedimentoDTOList.add(new ProcedimentoDTO(202030,"Excisão de Granuloma de corpo estranho"));
-        procedimentoDTOList.add(new ProcedimentoDTO(101020,"Investigação Diagnóstica"));
-
-        return  procedimentoDTOList;
+    @GetMapping("/pessoa")
+    public Pessoa testePessoa(){
+        pessoaRepository.saveAndFlush(new Pessoa("123456789",new Date("09/09/2023"),null,"teste Ti"));
+        return new Pessoa("123456789",new Date("09/09/2023"),null,"teste Ti");
     }
 
 }

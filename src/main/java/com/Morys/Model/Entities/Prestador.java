@@ -2,29 +2,44 @@ package com.Morys.Model.Entities;
 
 import com.Morys.Model.Entities.Classes.Classe_Prestador;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+
 @Entity
 public class Prestador {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private int classe;
+    @ManyToOne(targetEntity = Classe_Prestador.class)
+    @JoinColumn(name = "classe")
+    private Classe_Prestador classe;
+    @Column(length = 10,nullable = false,unique = true)
     private Integer codigo;
     private String nome;
+    @ManyToOne(targetEntity = CBO.class)
+    @JoinColumn(name = "CBO")
+    private CBO cbo;
 
-    private String cpf;
+    private Date data_criacao = new Date();
+    private Date data_atualizacao;
 
-    public Prestador(int classe, Integer codigo, String nome, String cpf) {
-        this.classe = classe;
-        this.codigo = codigo;
-        this.nome = nome;
-        this.cpf = cpf;
-    }
+    @ManyToOne(targetEntity = Pessoa.class)
+    @JoinColumn(name = "pessoa")
+    private Pessoa pessoa;
 
     public Prestador() {
     }
 
-    public void setClasse(int classe) {
-        this.classe = classe;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+
 
     public Integer getCodigo() {
         return codigo;
@@ -42,11 +57,11 @@ public class Prestador {
         return Id;
     }
 
-    public Integer getClasse() {
+    public Classe_Prestador getClasse() {
         return classe;
     }
 
-    public void setClasse(Integer classe) {
+    public void setClasse(Classe_Prestador classe) {
         this.classe = classe;
     }
 
@@ -58,11 +73,27 @@ public class Prestador {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public CBO getCbo() {
+        return cbo;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCbo(CBO cbo) {
+        this.cbo = cbo;
+    }
+
+    public Date getData_criacao() {
+        return data_criacao;
+    }
+
+    public void setData_criacao(Date data_criacao) {
+        this.data_criacao = data_criacao;
+    }
+
+    public Date getData_atualizacao() {
+        return data_atualizacao;
+    }
+
+    public void setData_atualizacao(Date data_atualizacao) {
+        this.data_atualizacao = data_atualizacao;
     }
 }

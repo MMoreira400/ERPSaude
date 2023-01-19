@@ -1,9 +1,7 @@
 package com.Morys.Model.Entities;
 
 import jakarta.persistence.*;
-
 import java.util.List;
-
 @Entity
 public class Solicitacao {
 
@@ -17,6 +15,7 @@ public class Solicitacao {
     private List<Procedimento> procedimentos;
     @Enumerated(EnumType.STRING)
     private StatusSolicitacao statusSolicitacao = StatusSolicitacao.NOVO;
+
 
     public Solicitacao() {
     }

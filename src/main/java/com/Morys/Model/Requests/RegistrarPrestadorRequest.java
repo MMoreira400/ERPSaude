@@ -1,6 +1,5 @@
 package com.Morys.Model.Requests;
 
-import com.Morys.Model.Entities.Classes.Classe_Prestador;
 import com.Morys.Model.Entities.Prestador;
 
 public class RegistrarPrestadorRequest {
@@ -38,8 +37,5 @@ public class RegistrarPrestadorRequest {
         this.cpf = cpf;
     }
 
-    public final Prestador converterPrestador() {
-        return new Prestador(this.classe, this.codigo,  this.nome, this.cpf);
-    }
 
 }

@@ -2,7 +2,6 @@ package com.Morys.Model.Entities;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
 public class Cliente {
@@ -10,23 +9,18 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 10,nullable = false,unique = true)
     private Integer codigo;
     private String nome;
-    private String CPF;
-
+    private String cns;
+    @ManyToOne(targetEntity = Pessoa.class)
+    @JoinColumn(name = "pessoa")
+    private Pessoa pessoa;
     public Cliente() {
     }
 
-    public Cliente(String nome, String CPF) {
-        this.nome = nome;
-        this.CPF = CPF;
-    }
 
-    public Cliente(Integer codigo, String nome, String numeroCartao, String CPF) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.CPF = CPF;
-    }
+
 
     public Long getId() {
         return id;
@@ -48,12 +42,19 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCns() {
+        return cns;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCns(String cns) {
+        this.cns = cns;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 }

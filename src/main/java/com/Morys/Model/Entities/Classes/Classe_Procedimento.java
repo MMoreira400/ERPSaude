@@ -12,6 +12,8 @@ public class Classe_Procedimento {
     private String Codigo;
     private String Termo;
 
+    public Classe_Procedimento() {
+    }
 
     public Integer getID() {
         return ID;

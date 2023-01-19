@@ -1,9 +1,8 @@
 package com.Morys.Model.Requests;
 
-import com.Morys.Model.Entities.*;
-import com.Morys.Model.Entities.Responses.ClienteDTO;
-import com.Morys.Model.Entities.Responses.PrestadorDTO;
-import com.Morys.Model.Entities.Responses.ProcedimentoDTO;
+import com.Morys.Model.Responses.ClienteDTO;
+import com.Morys.Model.Responses.PrestadorDTO;
+import com.Morys.Model.Responses.ProcedimentoDTO;
 
 import java.util.List;
 

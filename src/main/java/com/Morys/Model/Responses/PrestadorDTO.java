@@ -1,4 +1,4 @@
-package com.Morys.Model.Entities.Responses;
+package com.Morys.Model.Responses;
 
 
 import com.Morys.Model.Entities.Prestador;
@@ -18,6 +18,7 @@ public class PrestadorDTO {
     public String getNome() {
         return nome;
     }
+
 
     public PrestadorDTO(Prestador prestador) {
         this.codigo = prestador.getCodigo();
